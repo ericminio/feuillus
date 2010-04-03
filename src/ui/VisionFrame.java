@@ -5,12 +5,12 @@ import javax.swing.JDesktopPane;
 
 
 @SuppressWarnings("serial")
-public class MainFrame extends JDesktopPane {
+public class VisionFrame extends JDesktopPane {
 
 	private WoodCountFormFrame formFrame;
 	private WoodCountListFrame listFrame;
 	
-	public MainFrame() {
+	public VisionFrame() {
 		setSize(new Dimension(700, 500));
 		addFrames();
 	}
@@ -32,7 +32,6 @@ public class MainFrame extends JDesktopPane {
 		if (listFrame == null) {
 			listFrame = new WoodCountListFrame();
 			listFrame.setVisible(true);
-			listFrame.setLocation(formFrame.getX() + formFrame.getWidth() + 20, getY());
 		}
 		return listFrame;
 	}
