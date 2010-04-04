@@ -2,41 +2,38 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
-import data.Inventory;
 import ui.VisionFrame;
 import ui.VisionToolBar;
 import ui.VisionToolBarListener;
+import ui.vision.CounterVision;
+import ui.vision.Vision;
+import data.Inventory;
 
 public class Controller implements VisionToolBarListener {
 
+	private Inventory inventory;
 	private JPanel mainFrame;
 	private VisionToolBar visionToolBar;
 	private VisionFrame visionFrame;
-	private Inventory inventory;
 	
 	public Controller() {
-		inventory = new Inventory();
-		getVisionToolBar().register(this);
-		counterVisionAsked();
+		activateVision(new CounterVision());
 	}
 	
 	public VisionFrame getVisionFrame() {
 		if (visionFrame == null) {
 			visionFrame = new VisionFrame();
 			
-			visionFrame.getWoodCountFormFrame().getWoodCountForm().register(inventory);
-			visionFrame.getWoodCountListFrame().getWoodCountList().setData(inventory);
+			visionFrame.getWoodCountFormFrame().getWoodCountForm().register(getInventory());
+			visionFrame.getWoodCountListFrame().getWoodCountList().setData(getInventory());
 		}
 		return visionFrame;
 	}
 
-	public Inventory getInventory() {
-		return inventory;
-	}
-	
 	public VisionToolBar getVisionToolBar() {
 		if (visionToolBar == null) {
 			visionToolBar = new VisionToolBar();
+			visionToolBar.register(this);
 		}
 		return visionToolBar;
 	}
@@ -51,23 +48,15 @@ public class Controller implements VisionToolBarListener {
 		return mainFrame;
 	}
 
-	public void counterVisionAsked() {
-		getVisionFrame().getWoodCountFormFrame().setVisible(true);
-		
-		getVisionFrame().getWoodCountListFrame().setVisible(true);
-		getVisionFrame().getWoodCountListFrame().setLocation(
-				getVisionFrame().getWoodCountFormFrame().getX()
-				+ getVisionFrame().getWoodCountFormFrame().getWidth()
-				+ 20,
-				getVisionFrame().getWoodCountListFrame().getY());
+	public Inventory getInventory() {
+		if (inventory == null) {
+			inventory = new Inventory();
+		}
+		return inventory;
 	}
 
-	public void marketVisionAsked() {
-		getVisionFrame().getWoodCountFormFrame().setVisible(false);
-		
-		getVisionFrame().getWoodCountListFrame().setVisible(true);
-		getVisionFrame().getWoodCountListFrame().setLocation(20, 
-				getVisionFrame().getWoodCountListFrame().getY());
+	public void activateVision(Vision vision) {
+		vision.activateVisionIn(getVisionFrame());
 	}
 
 }

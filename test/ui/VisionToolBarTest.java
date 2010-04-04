@@ -14,6 +14,10 @@ import javax.swing.JToolBar;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
+
+import ui.vision.CounterVision;
+import ui.vision.MarketVision;
 
 
 public class VisionToolBarTest {
@@ -66,7 +70,7 @@ public class VisionToolBarTest {
 		VisionToolBarListener listener = mock(VisionToolBarListener.class);
 		visionToolBar.register(listener);
 		visionToolBar.counterButtonClicked();
-		verify(listener).counterVisionAsked();
+		verify(listener).activateVision(Mockito.any(CounterVision.class));
 	}
 	
 	@Test public void
@@ -74,7 +78,7 @@ public class VisionToolBarTest {
 		VisionToolBarListener listener = mock(VisionToolBarListener.class);
 		visionToolBar.register(listener);
 		visionToolBar.marketButtonClicked();
-		verify(listener).marketVisionAsked();
+		verify(listener).activateVision(Mockito.any(MarketVision.class));
 	}
 	
 	@Test public void

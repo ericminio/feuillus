@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
+import ui.vision.CounterVision;
+import ui.vision.MarketVision;
+
 @SuppressWarnings("serial")
 public class VisionToolBar extends JToolBar {
 
@@ -61,13 +64,13 @@ public class VisionToolBar extends JToolBar {
 
 	public void counterButtonClicked() {
 		if (listener != null) {
-			listener.counterVisionAsked();
+			listener.activateVision(new CounterVision());
 		}
 	}
 
 	public void marketButtonClicked() {
 		if (listener != null) {
-			listener.marketVisionAsked();
+			listener.activateVision(new MarketVision());
 		}
 	}
 }
