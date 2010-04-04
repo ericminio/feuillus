@@ -14,5 +14,7 @@ public class CounterVision implements Vision {
 				+ 20,
 				
 				visionFrame.getWoodCountListFrame().getY());
+		
+		visionFrame.getWoodRequestListFrame().setVisible(false);
 	}
 }

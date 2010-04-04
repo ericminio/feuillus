@@ -1,4 +1,4 @@
-package ui;
+package ui.designation;
 import static org.junit.Assert.assertTrue;
 
 import java.awt.Component;
@@ -8,6 +8,7 @@ import javax.swing.JInternalFrame;
 
 import org.junit.Before;
 import org.junit.Test;
+
 
 
 

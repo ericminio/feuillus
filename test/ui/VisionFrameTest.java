@@ -3,48 +3,49 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import ui.designation.WoodCountFormFrame;
+import ui.designation.WoodCountListFrame;
+import ui.request.WoodRequestListFrame;
 
 
 
 public class VisionFrameTest {
 
-	private VisionFrame mainFrame;
+	private VisionFrame visionFrame;
 	
 	@Before public void
 	setUp() {
-		mainFrame = new VisionFrame();
+		visionFrame = new VisionFrame();
 	}
 	
 	@Test public void
 	shouldBeADesktopPanel() {
-		assertTrue(mainFrame instanceof JDesktopPane);
+		assertTrue(visionFrame instanceof JDesktopPane);
 	}
 	
 	@Test public void
 	shouldBeBig() {
-		assertEquals(700, mainFrame.getSize().getWidth(), 0); 
-		assertEquals(500, mainFrame.getSize().getHeight(), 0);
+		assertEquals(700, visionFrame.getSize().getWidth(), 0); 
+		assertEquals(500, visionFrame.getSize().getHeight(), 0);
 	}
 	
 	@Test public void
 	shouldContainAWoodCountForm() {
-		JInternalFrame woodCountFormFrame = mainFrame.getAllFrames()[0];
-		assertTrue(woodCountFormFrame instanceof WoodCountFormFrame);
+		assertTrue(visionFrame.getAllFrames()[0] instanceof WoodCountFormFrame);
 	}
 	
 	@Test public void
 	shouldContainAWoodCountList() {
-		JInternalFrame woodCountListFrame = mainFrame.getAllFrames()[1];
-		assertTrue(woodCountListFrame instanceof WoodCountListFrame);
+		assertTrue(visionFrame.getAllFrames()[1] instanceof WoodCountListFrame);
 	}
 	
 	@Test public void
-	shouldContainAVisionToolBar() {
-		JInternalFrame woodCountListFrame = mainFrame.getAllFrames()[1];
-		assertTrue(woodCountListFrame instanceof WoodCountListFrame);
+	shouldContainAWoodRequestList() {
+		assertTrue(visionFrame.getAllFrames()[2] instanceof WoodRequestListFrame);
 	}
+	
 }

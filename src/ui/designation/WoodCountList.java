@@ -1,4 +1,4 @@
-package ui;
+package ui.designation;
 
 import java.awt.Dimension;
 

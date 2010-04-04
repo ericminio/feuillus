@@ -1,6 +1,7 @@
 package ui.vision;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -28,5 +29,7 @@ public class CounterVisionTest {
 		assertTrue(visionFrame.getWoodCountListFrame().isVisible());
 		assertEquals(visionFrame.getWoodCountFormFrame().getX() + visionFrame.getWoodCountFormFrame().getWidth() + 20, 
 				visionFrame.getWoodCountListFrame().getX());
+		
+		assertFalse(visionFrame.getWoodRequestListFrame().isVisible());
 	}
 }

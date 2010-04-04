@@ -1,4 +1,4 @@
-package ui;
+package ui.designation;
 
 import java.awt.BorderLayout;
 
@@ -10,6 +10,7 @@ public class WoodCountListFrame extends JInternalFrame {
 	private WoodCountList woodCountList;
 	
 	public WoodCountListFrame() {
+		setTitle("Bois dispo");
 		addComponents();
 	}
 	

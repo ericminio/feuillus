@@ -1,4 +1,4 @@
-package ui;
+package ui.designation;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -12,6 +12,7 @@ import javax.swing.ListModel;
 
 import org.junit.Before;
 import org.junit.Test;
+
 
 public class WoodCountListTest {
 

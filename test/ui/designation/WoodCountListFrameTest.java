@@ -1,5 +1,6 @@
-package ui;
+package ui.designation;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.awt.Component;
@@ -11,31 +12,36 @@ import org.junit.Before;
 import org.junit.Test;
 
 
+
 public class WoodCountListFrameTest {
 
-	private WoodCountListFrame inventoryFrame;
+	private WoodCountListFrame woodCountListFrame;
 	
 	@Before public void
 	setUp() {
-		inventoryFrame = new WoodCountListFrame();
+		woodCountListFrame = new WoodCountListFrame();
 	}
 	
 	@Test public void
 	shouldBeAJnternalFrame() {
-		assertTrue(inventoryFrame instanceof JInternalFrame);
+		assertTrue(woodCountListFrame instanceof JInternalFrame);
 	}
 	
 	@Test public void
 	shouldBebigEnoughWhenShowed() {
-		Dimension size = inventoryFrame.getSize();
+		Dimension size = woodCountListFrame.getSize();
 		assertTrue(size.getWidth() > 0);
 		assertTrue(size.getHeight() > 0);
 	}
 	
 	@Test public void
 	shouldContainWoodCountList() {
-		Component component = inventoryFrame.getContentPane().getComponent(0);
+		Component component = woodCountListFrame.getContentPane().getComponent(0);
 		assertTrue(component instanceof WoodCountList);
 	}
 
+	@Test public void
+	hasATitle() {
+		assertEquals("Bois dispo", woodCountListFrame.getTitle());
+	}
 }
