@@ -4,7 +4,7 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 
-public class Laucher {
+public class Game {
 
 	public static void main(String... argv) {
 		Controller controller = new Controller();
