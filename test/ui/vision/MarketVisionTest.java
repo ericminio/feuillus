@@ -30,6 +30,9 @@ public class MarketVisionTest {
 		assertTrue(visionFrame.getWoodRequestListFrame().isVisible());
 		assertEquals(visionFrame.getWoodCountListFrame().getX() + visionFrame.getWoodCountListFrame().getWidth() +20,
 				visionFrame.getWoodRequestListFrame().getX());
-		
+		assertTrue(visionFrame.getStatisticFrame().isVisible());
+		assertEquals(visionFrame.getWoodRequestListFrame().getX() + visionFrame.getWoodRequestListFrame().getWidth()+20,
+				visionFrame.getStatisticFrame().getX());
+		assertEquals(40, visionFrame.getStatisticFrame().getY());
 	}
 }

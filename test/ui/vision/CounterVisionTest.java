@@ -31,5 +31,6 @@ public class CounterVisionTest {
 				visionFrame.getWoodCountListFrame().getX());
 		
 		assertFalse(visionFrame.getWoodRequestListFrame().isVisible());
+		assertFalse(visionFrame.getStatisticFrame().isVisible());
 	}
 }

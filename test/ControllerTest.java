@@ -37,6 +37,7 @@ public class ControllerTest {
 		assertNotNull(controller.getWoodRequests());
 		assertNotNull(controller.getMarketController());
 		assertNotNull(controller.getRequestRandomizer());
+		assertNotNull(controller.getStatistics());
 	}
 	
 	@Test public void
@@ -58,6 +59,9 @@ public class ControllerTest {
 				controller.getVisionFrame().getWoodRequestListFrame().getWoodRequestList().getList().getListSelectionListeners()[0]);
 		
 		assertEquals(controller.getWoodRequests(), controller.getRequestRandomizer().getWoodRequests());
+		
+		assertEquals(controller.getStatistics(), controller.getMarketController().getStatistics());
+		assertEquals(controller.getStatistics(), controller.getVisionFrame().getStatisticFrame().getStatisticList().getModel());
 	}
 	
 	@Test public void

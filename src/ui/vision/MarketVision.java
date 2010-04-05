@@ -15,5 +15,9 @@ public class MarketVision implements Vision {
 		visionFrame.getWoodRequestListFrame().setLocation(
 				visionFrame.getWoodCountListFrame().getX() + visionFrame.getWoodCountListFrame().getWidth() +20,
 				visionFrame.getWoodRequestListFrame().getY());
+		
+		visionFrame.getStatisticFrame().setVisible(true);
+		visionFrame.getStatisticFrame().setLocation(visionFrame.getWoodRequestListFrame().getX() + visionFrame.getWoodRequestListFrame().getWidth()+20,
+				40);
 	}
 }

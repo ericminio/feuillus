@@ -13,6 +13,8 @@ public class MarketController implements ListSelectionListener {
 	private int selectedWoodIndex;
 	private int selectedRequestIndex;
 	
+	private Statistics statistics;
+	
 	public MarketController() {
 		selectedWoodIndex = -1;
 		selectedRequestIndex = -1;
@@ -63,10 +65,32 @@ public class MarketController implements ListSelectionListener {
 		
 		String selectedWood = (String) woods.get(selectedWoodIndex);
 		String selectedRequest = (String) requests.get(selectedRequestIndex);
-		if (selectedWood.equalsIgnoreCase(selectedRequest)) {
-			woods.remove(selectedWoodIndex);
-			requests.remove(selectedRequestIndex);
+		if (match(selectedWood, selectedRequest)) {
+			signContract();
 		}
 	}
+
+	protected boolean match(String selectedWood, String selectedRequest) {
+		return selectedWood.equalsIgnoreCase(selectedRequest);
+	}
+
+	protected void signContract() {
+		woods.remove(selectedWoodIndex);
+		String removed = (String) requests.remove(selectedRequestIndex);
+		if (statistics != null) {
+			updateStats(removed);
+		}
+	}
+
+	public void setStatistics(Statistics statistics) {
+		this.statistics = statistics;
+	}
+
+	public Statistics getStatistics() {
+		return statistics;
+	}
 	
+	protected void updateStats(String removed) {
+		statistics.addContract(removed);
+	}
 }

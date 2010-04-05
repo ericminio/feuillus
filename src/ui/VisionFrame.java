@@ -6,6 +6,7 @@ import javax.swing.JDesktopPane;
 import ui.designation.WoodCountFormFrame;
 import ui.designation.WoodCountListFrame;
 import ui.request.WoodRequestListFrame;
+import ui.statistics.StatisticFrame;
 
 
 @SuppressWarnings("serial")
@@ -14,6 +15,7 @@ public class VisionFrame extends JDesktopPane {
 	private WoodCountFormFrame formFrame;
 	private WoodCountListFrame listFrame;
 	private WoodRequestListFrame requestFrame;
+	private StatisticFrame statisticFrame;
 	
 	public VisionFrame() {
 		setSize(new Dimension(700, 500));
@@ -24,6 +26,7 @@ public class VisionFrame extends JDesktopPane {
 		add(getWoodCountFormFrame());
 		add(getWoodCountListFrame());
 		add(getWoodRequestListFrame());
+		add(getStatisticFrame());
 	}
 	
 	public WoodCountFormFrame getWoodCountFormFrame() {
@@ -45,6 +48,13 @@ public class VisionFrame extends JDesktopPane {
 			requestFrame = new WoodRequestListFrame();
 		}
 		return requestFrame;
+	}
+	
+	public StatisticFrame getStatisticFrame() {
+		if (statisticFrame == null) {
+			statisticFrame = new StatisticFrame();
+		}
+		return statisticFrame;
 	}
 
 	

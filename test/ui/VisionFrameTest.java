@@ -10,6 +10,7 @@ import org.junit.Test;
 import ui.designation.WoodCountFormFrame;
 import ui.designation.WoodCountListFrame;
 import ui.request.WoodRequestListFrame;
+import ui.statistics.StatisticFrame;
 
 
 
@@ -35,17 +36,22 @@ public class VisionFrameTest {
 	
 	@Test public void
 	shouldContainAWoodCountForm() {
-		assertTrue(visionFrame.getAllFrames()[0] instanceof WoodCountFormFrame);
+		assertEquals(WoodCountFormFrame.class, visionFrame.getAllFrames()[0].getClass());
 	}
 	
 	@Test public void
 	shouldContainAWoodCountList() {
-		assertTrue(visionFrame.getAllFrames()[1] instanceof WoodCountListFrame);
+		assertEquals(WoodCountListFrame.class, visionFrame.getAllFrames()[1].getClass());
 	}
 	
 	@Test public void
 	shouldContainAWoodRequestList() {
-		assertTrue(visionFrame.getAllFrames()[2] instanceof WoodRequestListFrame);
+		assertEquals(WoodRequestListFrame.class, visionFrame.getAllFrames()[2].getClass());
+	}
+	
+	@Test public void
+	shouldContainAStatisticList() {
+		assertEquals(StatisticFrame.class, visionFrame.getAllFrames()[3].getClass());
 	}
 	
 }
