@@ -9,6 +9,7 @@ import ui.vision.MarketVision;
 import ui.vision.Vision;
 import data.AvailableWoods;
 import data.MarketController;
+import data.RequestRandomizer;
 import data.WoodRequests;
 
 public class Controller implements VisionToolBarListener {
@@ -20,9 +21,11 @@ public class Controller implements VisionToolBarListener {
 	private AvailableWoods availableWoods;
 	private WoodRequests woodRequests;
 	private MarketController marketController;
+	private RequestRandomizer requestRandomizer;
 	
 	public Controller() {
 		activateVision(new MarketVision());
+		getRequestRandomizer().start();
 	}
 	
 	public VisionFrame getVisionFrame() {
@@ -81,6 +84,14 @@ public class Controller implements VisionToolBarListener {
 			marketController.setWoodRequests(getWoodRequests());
 		}
 		return marketController;
+	}
+
+	public RequestRandomizer getRequestRandomizer() {
+		if (requestRandomizer == null) {
+			requestRandomizer = new RequestRandomizer();
+			requestRandomizer.setWoodRequests(getWoodRequests());
+		}
+		return requestRandomizer;
 	}
 
 }

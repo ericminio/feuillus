@@ -2,8 +2,14 @@ package ui.designation;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 
 import java.awt.Component;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -12,11 +18,6 @@ import javax.swing.JTextField;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.never;
 
 public class WoodCountFormTest {
 
@@ -43,7 +44,7 @@ public class WoodCountFormTest {
 	}
 	
 	@Test public void
-	shouldContainAButton() {
+	shouldContainASaveButton() {
 		Component button = woodCountForm.getComponent(1);
 		assertNotNull(button);
 		assertEquals(JButton.class, button.getClass());
@@ -87,6 +88,63 @@ public class WoodCountFormTest {
 		woodCountForm.getEssenceField().setText(" ");
 		woodCountForm.saveButtonClicked();
 		assertEquals("", woodCountForm.getEssenceField().getText());
+	}
+	
+	@Test public void
+	hasAVolumeInputShorcut() {
+		woodCountForm.getEssenceField().setText("might contain something");
+		woodCountForm.setVolume("100m3");
+		assertEquals("100m3 ", woodCountForm.getEssenceField().getText());
+	}
+	
+	@Test public void
+	hasAWoodInputShortcut() {
+		woodCountForm.setVolume("100m3");
+		woodCountForm.setWood("chene");
+		assertEquals("100m3 chene", woodCountForm.getEssenceField().getText());
+	}
+	
+	@Test public void
+	layoutIsGrid() {
+		assertEquals(GridLayout.class, woodCountForm.getLayout().getClass());
+	}
+	
+	@Test public void
+	containsVolumeShorcutButtons() {
+		String[] expectedLabels = new String[] {"100m3", "200m3", "300m3"};
+		
+		Component[] components = woodCountForm.getComponents();
+		List<JButton> buttons = new ArrayList<JButton>();
+		for (int i=0; i<components.length; i++) {
+			if (components[i] instanceof JButton) {
+				if (components[i].getName()!=null && components[i].getName().equalsIgnoreCase("volume")) {
+					buttons.add((JButton)components[i]);
+				}
+			}
+		}
+		assertEquals(expectedLabels.length, buttons.size());
+		for (int i=0; i<buttons.size(); i++) {
+			assertEquals(expectedLabels[i], buttons.get(i).getText());
+		}
+	}
+	
+	@Test public void
+	containsWoodShorcutButtons() {
+		String[] expectedLabels = new String[] {"chene", "hetre", "bouleau", "cerisier"};
+		
+		Component[] components = woodCountForm.getComponents();
+		List<JButton> buttons = new ArrayList<JButton>();
+		for (int i=0; i<components.length; i++) {
+			if (components[i] instanceof JButton) {
+				if (components[i].getName()!=null && components[i].getName().equalsIgnoreCase("wood")) {
+					buttons.add((JButton)components[i]);
+				}
+			}
+		}
+		assertEquals(expectedLabels.length, buttons.size());
+		for (int i=0; i<buttons.size(); i++) {
+			assertEquals(expectedLabels[i], buttons.get(i).getText());
+		}
 	}
 	
 	
