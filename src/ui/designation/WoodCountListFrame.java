@@ -15,7 +15,7 @@ public class WoodCountListFrame extends JInternalFrame {
 	}
 	
 	protected void addComponents() {
-		getContentPane().setLayout(new BorderLayout());
+		getContentPane().setLayout(new BorderLayout());		
 		getContentPane().add(getWoodCountList());
 		pack();
 	}
@@ -26,4 +26,5 @@ public class WoodCountListFrame extends JInternalFrame {
 		}
 		return woodCountList;
 	}
+
 }

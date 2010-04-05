@@ -4,15 +4,12 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
-import java.awt.Component;
-
-import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.ListModel;
 
 import org.junit.Before;
 import org.junit.Test;
-
 
 public class WoodCountListTest {
 
@@ -29,20 +26,19 @@ public class WoodCountListTest {
 	}
 	
 	@Test public void
-	shouldContainAInventoryList() {
-		Component list = woodCountList.getComponent(0);
-		assertNotNull(list); 
-		assertEquals(JList.class, list.getClass());
-		JList woodCountList = (JList) list;
-		assertEquals(200, woodCountList.getPreferredSize().getWidth(), 0);
-		assertEquals(300, woodCountList.getPreferredSize().getHeight(), 0);
+	displaysTheGivenModel() {
+		ListModel fake = mock(ListModel.class);
+		woodCountList.setData(fake);
+		
+		assertEquals(fake, woodCountList.getList().getModel());
 	}
 	
 	@Test public void
-	displaysTheGivenModel() {
-		ListModel listModel = mock(ListModel.class);
-		woodCountList.setData(listModel);
-		
-		assertEquals(listModel, woodCountList.getList().getModel());
+	scrollSpecifications() {
+		JScrollPane scrollPane = woodCountList.getScrollPane();
+		assertNotNull(scrollPane.getVerticalScrollBar());
+		assertEquals(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, scrollPane.getVerticalScrollBarPolicy());
+		assertEquals(180, scrollPane.getPreferredSize().getWidth(), 0);
+		assertEquals(300, scrollPane.getPreferredSize().getHeight(), 0);
 	}
 }

@@ -3,15 +3,12 @@ package ui.designation;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.JInternalFrame;
 
 import org.junit.Before;
 import org.junit.Test;
-
-
 
 public class WoodCountListFrameTest {
 
@@ -36,12 +33,12 @@ public class WoodCountListFrameTest {
 	
 	@Test public void
 	shouldContainWoodCountList() {
-		Component component = woodCountListFrame.getContentPane().getComponent(0);
-		assertTrue(component instanceof WoodCountList);
+		assertEquals(1, woodCountListFrame.getContentPane().getComponents().length);
 	}
 
 	@Test public void
 	hasATitle() {
 		assertEquals("Bois dispo", woodCountListFrame.getTitle());
 	}
+	
 }
